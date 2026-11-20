@@ -21,6 +21,19 @@ class Store:
     def rows(self, module: str) -> list[dict[str, Any]]:
         return self._tables.setdefault(module, [])
 
+    def has_table(self, module: str) -> bool:
+        return module in self._tables
+
+    def next_id(self, module: str) -> int:
+        return max((int(row.get("id", 0)) for row in self.rows(module)), default=0) + 1
+
+    def add(self, module: str, row: dict[str, Any]) -> dict[str, Any]:
+        rows = self.rows(module)
+        row = dict(row)
+        row.setdefault("id", self.next_id(module))
+        rows.append(row)
+        return row
+
     def find(self, module: str, entry_id: int) -> dict[str, Any] | None:
         for row in self.rows(module):
             if int(row.get("id", 0)) == entry_id:

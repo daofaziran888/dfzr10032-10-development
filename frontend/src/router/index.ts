@@ -9,6 +9,7 @@ const RobotTask = () => import('@/views/robot_task/index.vue')
 const Ingestion = () => import('@/views/ingestion/index.vue')
 const Parser = () => import('@/views/parser/index.vue')
 const Validator = () => import('@/views/validator/index.vue')
+const Quality = () => import('@/views/quality/index.vue')
 const Dedup = () => import('@/views/dedup/index.vue')
 const Schedule = () => import('@/views/schedule/index.vue')
 const Monitor = () => import('@/views/monitor/index.vue')
@@ -31,6 +32,7 @@ const router = createRouter({
     { path: '/ingestion', name: 'ingestion', component: Ingestion },
     { path: '/parser', name: 'parser', component: Parser },
     { path: '/validator', name: 'validator', component: Validator },
+    { path: '/quality', name: 'quality', component: Quality },
     { path: '/dedup', name: 'dedup', component: Dedup },
     { path: '/schedule', name: 'schedule', component: Schedule },
     { path: '/monitor', name: 'monitor', component: Monitor },
